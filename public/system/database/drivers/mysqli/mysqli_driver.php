@@ -114,6 +114,7 @@ class CI_DB_mysqli_driver extends CI_DB {
 	 * @param	bool	$persistent
 	 * @return	object
 	 */
+	#[\ReturnTypeWillChange]
 	public function db_connect($persistent = FALSE)
 	{
 		// Do we have a socket path?
@@ -231,6 +232,7 @@ class CI_DB_mysqli_driver extends CI_DB {
 	 *
 	 * @return	void
 	 */
+	#[\ReturnTypeWillChange]
 	public function reconnect()
 	{
 		if ($this->conn_id !== FALSE && $this->conn_id->ping() === FALSE)
@@ -247,6 +249,7 @@ class CI_DB_mysqli_driver extends CI_DB {
 	 * @param	string	$database
 	 * @return	bool
 	 */
+	#[\ReturnTypeWillChange]
 	public function db_select($database = '')
 	{
 		if ($database === '')
@@ -284,6 +287,7 @@ class CI_DB_mysqli_driver extends CI_DB {
 	 *
 	 * @return	string
 	 */
+	#[\ReturnTypeWillChange]
 	public function version()
 	{
 		if (isset($this->data_cache['version']))
@@ -302,8 +306,10 @@ class CI_DB_mysqli_driver extends CI_DB {
 	 * @param	string	$sql	an SQL query
 	 * @return	mixed
 	 */
+	#[\ReturnTypeWillChange]
 	protected function _execute($sql)
 	{
+		
 		return $this->conn_id->query($this->_prep_query($sql));
 	}
 
@@ -317,6 +323,7 @@ class CI_DB_mysqli_driver extends CI_DB {
 	 * @param	string	$sql	an SQL query
 	 * @return	string
 	 */
+	#[\ReturnTypeWillChange]
 	protected function _prep_query($sql)
 	{
 		// mysqli_affected_rows() returns 0 for "DELETE FROM TABLE" queries. This hack
