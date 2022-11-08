@@ -53,12 +53,13 @@ class ExamController extends CI_Controller {
         $data['alternatives']       = $Alternatives;
         $data['idexam']             = $idexam;
         $data['idquestion']         = $idquestion;
-        $data['CountQuestions']     = $CountQuestions;
+        $data['countquestions']     = $CountQuestions;
         $data['isfinal']            = $isfinal;
         $data['isStart']            = $isStart;
         
-		$this->load->view('examview',$data);
-        $this->load->view('clockview');
+		//$this->load->view('examview',$data);
+        $this->load->view('examtestview',$data);
+        //$this->load->view('clockview');
 	}
 
     public function validate()
@@ -114,9 +115,11 @@ class ExamController extends CI_Controller {
         $data['alternatives']               = $Alternatives;   
         $data['isfinal']                    = $isfinal;
         $data['isStart']                    = $isStart;
+        $data['countquestions']             = $countquestions;
+        $data['idquestion']                 = $idquestionNOW;
        
-		$this->load->view('examview',$data);
-        
+		//$this->load->view('examview',$data);
+        $this->load->view('examtestview',$data);
     }
 
 
@@ -135,6 +138,7 @@ class ExamController extends CI_Controller {
     
         //GetAnswer
         $idalternative = $this->input->post('alternative');
+        $countquestions = $this->session->userdata('countQuestions');
         
         $isfinal    = false;
         $isStart    = false;
@@ -175,9 +179,11 @@ class ExamController extends CI_Controller {
         $data['alternativeselected']       =  $AlternativeSelected;  
         $data['isfinal']                    = $isfinal;
         $data['isStart']                    = $isStart;
-
-		$this->load->view('examview',$data);
+        $data['countquestions']             = $countquestions;
+        $data['idquestion']                 = $idquestionNOW;
         
+		//$this->load->view('examview',$data);
+        $this->load->view('examtestview',$data);
 
     }
 }
